@@ -29,5 +29,10 @@ urlpatterns = [
     path('reporte_encontrada/<int:pk>/', views.ReportesEncontradosDetailAPIView.as_view()),
     path('reporte_encontrada/update/<int:pk>', views.ReportesEncontradosUpdateAPIView.as_view()),
     path('reporte_encontrada/remove/<int:pk>/', views.ReportesEncontradosDeleteAPIView.as_view()),
-    
+  
+  # DESAPARECIDOS
+    path('desaparecido/', views.DesaparecidosCreateView.as_view()),
+    path('desaparecido/<int:pk>/', views.DesaparecidosDetailView.as_view()),
+    path('desaparecidoLista/', views.DesaparecidosListView.as_view()),
+
 ]

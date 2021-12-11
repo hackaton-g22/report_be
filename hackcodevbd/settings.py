@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    #'corsheaders',
     'hackcodev',
 ]
 
@@ -63,6 +64,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT':'json'
+}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -108,9 +118,9 @@ DATABASES = {
         'PASSWORD': 'ad7a39c30659ab1f3ecaaaaa073aec30cbda7a6502c383005ebdcfcd46927303',
         'HOST': 'ec2-54-225-203-79.compute-1.amazonaws.com',
         'PORT': '5432',
+        'TEST':{'MIRROR':'default'},
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
