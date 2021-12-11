@@ -1,1 +1,1 @@
-from .desaparecidosView import DesaparecidosCreateView, DesaparecidoSerializer , DesaparecidosListView
+from .desaparecidosView import DesaparecidosCreateView, DesaparecidosDetailView , DesaparecidosListView

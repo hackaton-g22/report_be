@@ -1,0 +1,1 @@
+from .desaparecidoSerializer import DesaparecidoSerializer

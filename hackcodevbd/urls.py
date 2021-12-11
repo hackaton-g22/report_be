@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hackcodev import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('desaparecido/', views.DesaparecidosCreateView.as_view()),
+    path('desaparecido/<int:pk', views.DesaparecidosDetailView.as_view()),
+    path('desaparecidoLista/', views.DesaparecidosListView.as_view()),
+
+
 ]
