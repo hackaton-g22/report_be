@@ -1,3 +1,4 @@
+from .userSerializer import UserSerializer
 from .desaparecidoSerializer import DesaparecidoSerializer
 from .reportes_encontrada_serializers import Reportes_Encontrada_Serializer
 
