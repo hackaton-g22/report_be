@@ -1,17 +1,17 @@
 from django.db.models import fields
 from rest_framework import serializers
-from hackcodev.models.desaparecidos import Desaparecidos
+from hackcodev.models.desaparecidos import Desaparecido
 class DesaparecidoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Desaparecidos
+        model = Desaparecido
         fields = ['id', 'des_cedula', 'des_nombre', 'des_apellido', 'des_edad', 'des_fecha_desaparecido', 'des_foto', 'des_tipo_sangre', 'des_sexo', 'des_color_piel', 'des_ciudad_recidencia', 'des_estatura', 'des_estado_caso', 'fam_nombre', 'fam_apellido', 'fam_telefono','fam_email' ]
     
     def create(self, validated_data):
-        desaparecidosInstance = Desaparecidos.objects.create(**validated_data)
+        desaparecidosInstance = Desaparecido.objects.create(**validated_data)
         return desaparecidosInstance
     
     def to_representation(self, obj):
-        desaparecidos = Desaparecidos.objects.get(id = obj.id)
+        desaparecidos = Desaparecido.objects.get(id = obj.id)
         
         return {
             'id' : desaparecidos.id,

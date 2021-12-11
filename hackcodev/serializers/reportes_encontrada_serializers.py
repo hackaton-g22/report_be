@@ -1,7 +1,6 @@
 from rest_framework                         import serializers
 from hackcodev.models.reportes_encontrada   import Reportes_Encontrada
-from models.desaparecidos                   import Desaparecido
-
+from hackcodev.models.desaparecidos         import Desaparecido
 class Reportes_Encontrada_Serializer(serializers.ModelSerializer):
     
     class Meta:

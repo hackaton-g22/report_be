@@ -24,8 +24,8 @@ urlpatterns = [
     path('refresh/', TokenRefreshView.as_view()),
     
     # REPORTES ENCONTRADA 
-    path('reporte_encontrada', views.ReportesEncontradosCreateAPIView.as_view()),
-    path('reporte_encontradaLista', views.ReportesEncontradosAPIView.as_view()),
+    path('reporte_encontrada/', views.ReportesEncontradosCreateAPIView.as_view()),
+    path('reporte_encontradaLista/', views.ReportesEncontradosAPIView.as_view()),
     path('reporte_encontrada/<int:pk>/', views.ReportesEncontradosDetailAPIView.as_view()),
     path('reporte_encontrada/update/<int:pk>', views.ReportesEncontradosUpdateAPIView.as_view()),
     path('reporte_encontrada/remove/<int:pk>/', views.ReportesEncontradosDeleteAPIView.as_view()),
@@ -34,5 +34,12 @@ urlpatterns = [
     path('desaparecido/', views.DesaparecidosCreateView.as_view()),
     path('desaparecido/<int:pk>/', views.DesaparecidosDetailView.as_view()),
     path('desaparecidoLista/', views.DesaparecidosListView.as_view()),
+    
+    # CASO CERRADO 
+     path('caso_cerrado/', views.CasoCerradoCreateAPIView.as_view()),
+    path('caso_cerradoLista/', views.CasoCerradoAPIView.as_view()),
+    path('caso_cerrado/<int:pk>/', views.CasoCerradoDetailAPIView.as_view()),
+    path('caso_cerrado/update/<int:pk>', views.CasoCerradoUpdateAPIView.as_view()),
+    path('caso_cerrado/remove/<int:pk>/', views.CasoCerradoDeleteAPIView.as_view()),
 
 ]

@@ -1,15 +1,16 @@
 from rest_framework                      import serializers
 from hackcodev.models.caso_cerrado_model import Caso_Cerrado
+from hackcodev.models.desaparecidos         import Desaparecido
 
 class Caso_Cerrado_Serializer(serializers.ModelSerializer): 
     class Meta: 
         model = Caso_Cerrado 
-        fields = ['motivo_desaparicion', 'fecha_aparicion']
+        fields = ['motivo_desaparicion', 'fecha_aparicion', 'desaparecido_fk']
 
 
 def to_representation(self, obj):  # de objeto a json
         caso = Caso_Cerrado.objects.get(id=obj.id)
-        desaparecidos = Desaparecido.objects.get(id=obj.desaparecido_fk.id)
+        desaparecido = Desaparecido.objects.get(id=obj.desaparecido_fk.id)
         
         return {
             "id": caso.id,

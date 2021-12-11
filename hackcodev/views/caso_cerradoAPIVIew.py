@@ -3,16 +3,16 @@ from rest_framework.response                               import Response
 from rest_framework.permissions                            import DjangoModelPermissionsOrAnonReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework_simplejwt.backends                     import TokenBackend
 from rest_framework_simplejwt.serializers                  import TokenObtainPairSerializer
-from hackcodev.models.reportes_encontrada                  import Reportes_Encontrada
-from hackcodev.serializers.reportes_encontrada_serializers import Reportes_Encontrada_Serializer
+from hackcodev.models.caso_cerrado_model                   import Caso_Cerrado
+from hackcodev.serializers.caso_cerrado_serializer         import Caso_Cerrado_Serializer
 
 
-class ReportesEncontradosCreateAPIView(generics.CreateAPIView): 
+class CasoCerradoCreateAPIView(generics.CreateAPIView): 
     
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
-    queryset = Reportes_Encontrada.objects.all()
-    serializer_class = Reportes_Encontrada_Serializer
+    queryset = Caso_Cerrado.objects.all()
+    serializer_class = Caso_Cerrado_Serializer
 
     def post(self, request, *args, **kwargs): # metodo HTTP (POST, GET, PUSH, DELETE) 
                                     # recibe una data en el request del body 
@@ -22,7 +22,7 @@ class ReportesEncontradosCreateAPIView(generics.CreateAPIView):
         print("Args", args)
         print("Kwargs", kwargs)
 
-        serializer = Reportes_Encontrada_Serializer(data=request.data)
+        serializer = Caso_Cerrado_Serializer(data=request.data)
         
         """Validation tocken
 
@@ -40,10 +40,10 @@ class ReportesEncontradosCreateAPIView(generics.CreateAPIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ReportesEncontradosAPIView(generics.ListAPIView):
+class CasoCerradoAPIView(generics.ListAPIView):
 
-    queryset = Reportes_Encontrada.objects.all()
-    serializer_class = Reportes_Encontrada_Serializer
+    queryset = Caso_Cerrado.objects.all()
+    serializer_class = Caso_Cerrado_Serializer
     # permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
@@ -63,13 +63,13 @@ class ReportesEncontradosAPIView(generics.ListAPIView):
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)"""
 
         queryset = self.get_queryset()
-        serializer = Reportes_Encontrada_Serializer(queryset, many=True)
+        serializer = Caso_Cerrado_Serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-class ReportesEncontradosDetailAPIView(generics.RetrieveAPIView):
+class CasoCerradoDetailAPIView(generics.RetrieveAPIView):
 
-    queryset = Reportes_Encontrada.objects.all()
-    serializer_class = Reportes_Encontrada_Serializer
+    queryset = Caso_Cerrado.objects.all()
+    serializer_class = Caso_Cerrado_Serializer
     # permission_classes = (IsAuthenticated,)
     
     def get(self, request, *args, **kwargs):
@@ -90,10 +90,10 @@ class ReportesEncontradosDetailAPIView(generics.RetrieveAPIView):
 
         # kwargs.append({'HTTP_AUTHORIZATION':'Bearer '+token,})  
         return super().get(request, *args, **kwargs)
-class ReportesEncontradosUpdateAPIView(generics.RetrieveUpdateAPIView):
+class CasoCerradoUpdateAPIView(generics.RetrieveUpdateAPIView):
     
-    queryset = Reportes_Encontrada.objects.all()
-    serializer_class = Reportes_Encontrada_Serializer
+    queryset = Caso_Cerrado.objects.all()
+    serializer_class = Caso_Cerrado_Serializer
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
 
@@ -115,10 +115,10 @@ class ReportesEncontradosUpdateAPIView(generics.RetrieveUpdateAPIView):
   
         return super().update(request, *args, **kwargs)
     
-class ReportesEncontradosDeleteAPIView(generics.RetrieveDestroyAPIView):
+class CasoCerradoDeleteAPIView(generics.RetrieveDestroyAPIView):
     
-    queryset = Reportes_Encontrada.objects.all()
-    serializer_class = Reportes_Encontrada_Serializer
+    queryset = Caso_Cerrado.objects.all()
+    serializer_class = Caso_Cerrado_Serializer
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
 
