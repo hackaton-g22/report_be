@@ -15,12 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework_simplejwt.views import (TokenObtainPairView, TokenRefreshView)
 from hackcodev import views
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('login/', TokenObtainPairView.as_view()),
+    path('refresh/', TokenRefreshView.as_view()),
+    
+    # REPORTES ENCONTRADA 
+    path('reporte_encontrada', views.ReportesEncontradosCreateAPIView.as_view()),
+    path('reporte_encontradaLista', views.ReportesEncontradosAPIView.as_view()),
+    path('reporte_encontrada/<int:pk>/', views.ReportesEncontradosDetailAPIView.as_view()),
+    path('reporte_encontrada/update/<int:pk>', views.ReportesEncontradosUpdateAPIView.as_view()),
+    path('reporte_encontrada/remove/<int:pk>/', views.ReportesEncontradosDeleteAPIView.as_view()),
+  
+  # DESAPARECIDOS
     path('desaparecido/', views.DesaparecidosCreateView.as_view()),
     path('desaparecido/<int:pk>/', views.DesaparecidosDetailView.as_view()),
     path('desaparecidoLista/', views.DesaparecidosListView.as_view()),
-
 
 ]

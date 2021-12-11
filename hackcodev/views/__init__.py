@@ -1,1 +1,3 @@
 from .desaparecidosView import DesaparecidosCreateView, DesaparecidosDetailView , DesaparecidosListView
+from .reportes_encontradaAPIView import ReportesEncontradosCreateAPIView, ReportesEncontradosAPIView, ReportesEncontradosDetailAPIView, ReportesEncontradosUpdateAPIView, ReportesEncontradosDeleteAPIView
+
