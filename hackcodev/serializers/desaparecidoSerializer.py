@@ -21,7 +21,7 @@ class DesaparecidoSerializer(serializers.ModelSerializer):
             'des_edad' : desaparecidos.des_edad,
             'des_fecha_desaparecido' : desaparecidos.des_fecha_desaparecido,
             'des_foto' : desaparecidos.des_foto,
-            'des_tipo_sangre' : desaparecidos.des_tipp_sangre,
+            'des_tipo_sangre' : desaparecidos.des_tipo_sangre,
             'des_sexo' : desaparecidos.des_sexo,
             'des_color_piel' : desaparecidos.des_color_piel,
             'des_ciudad_recidencia' : desaparecidos.des_ciudad_recidencia,

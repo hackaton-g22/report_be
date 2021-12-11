@@ -40,14 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    #'corsheaders',
     'hackcodev',
+    #'corsheaders',
 ]
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': False,
     'ALGORITHM': 'HS256',
@@ -74,17 +75,7 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT':'json'
 }
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.AllowAny',  # puede acceder a cualquier clase
-        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        # se necesita autenticar con JWT
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
-}
-
+AUTH_USER_MODEL = 'hackcodev.User'
 
 ROOT_URLCONF = 'hackcodevbd.urls'
 
@@ -111,6 +102,7 @@ WSGI_APPLICATION = 'hackcodevbd.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'd2l8jh5kfq96jq',

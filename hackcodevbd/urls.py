@@ -36,10 +36,13 @@ urlpatterns = [
     path('desaparecidoLista/', views.DesaparecidosListView.as_view()),
     
     # CASO CERRADO 
-     path('caso_cerrado/', views.CasoCerradoCreateAPIView.as_view()),
+    path('caso_cerrado/', views.CasoCerradoCreateAPIView.as_view()),
     path('caso_cerradoLista/', views.CasoCerradoAPIView.as_view()),
     path('caso_cerrado/<int:pk>/', views.CasoCerradoDetailAPIView.as_view()),
     path('caso_cerrado/update/<int:pk>', views.CasoCerradoUpdateAPIView.as_view()),
     path('caso_cerrado/remove/<int:pk>/', views.CasoCerradoDeleteAPIView.as_view()),
-
+    
+    # USER 
+    path('user/', views.UserCreateView.as_view()),
+    path('user/<int:pk>/', views.UserDetailView.as_view()),
 ]
