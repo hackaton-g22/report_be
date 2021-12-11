@@ -3,16 +3,16 @@ from rest_framework.response                               import Response
 from rest_framework.permissions                            import DjangoModelPermissionsOrAnonReadOnly, IsAdminUser, IsAuthenticated
 from rest_framework_simplejwt.backends                     import TokenBackend
 from rest_framework_simplejwt.serializers                  import TokenObtainPairSerializer
-from hackcodev.models.reportes_encontrada                  import ReportesEncontrada
-from hackcodev.serializers.reportes_encontrada_serializers import ReportesEncontradaSerializer
+from hackcodev.models.reportes_encontrada                  import Reportes_Encontrados
+from hackcodev.serializers.reportes_encontrada_serializers import Reportes_Encontrada_Serializer
 
 
 class ReportesEncontradosCreateAPIView(generics.CreateAPIView): 
     
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
-    queryset = ReportesEncontrada.objects.all()
-    serializer_class = ReportesEncontradaSerializer
+    queryset = Reportes_Encontrados.objects.all()
+    serializer_class = Reportes_Encontrada_Serializer
 
     def post(self, request, *args, **kwargs): # metodo HTTP (POST, GET, PUSH, DELETE) 
                                     # recibe una data en el request del body 
@@ -22,7 +22,7 @@ class ReportesEncontradosCreateAPIView(generics.CreateAPIView):
         print("Args", args)
         print("Kwargs", kwargs)
 
-        serializer = ReportesEncontradaSerializer(data=request.data)
+        serializer = Reportes_Encontrada_Serializer(data=request.data)
         
         """Validation tocken
 
@@ -42,8 +42,8 @@ class ReportesEncontradosCreateAPIView(generics.CreateAPIView):
 
 class ReportesEncontradosAPIView(generics.ListAPIView):
 
-    queryset = ReportesEncontrada.objects.all()
-    serializer_class = ReportesEncontradaSerializer
+    queryset = Reportes_Encontrados.objects.all()
+    serializer_class = Reportes_Encontrada_Serializer
     # permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
@@ -63,13 +63,13 @@ class ReportesEncontradosAPIView(generics.ListAPIView):
             return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)"""
 
         queryset = self.get_queryset()
-        serializer = ReportesEncontradaSerializer(queryset, many=True)
+        serializer = Reportes_Encontrada_Serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 class ReportesEncontradosDetailAPIView(generics.RetrieveAPIView):
 
-    queryset = ReportesEncontrada.objects.all()
-    serializer_class = ReportesEncontradaSerializer
+    queryset = Reportes_Encontrados.objects.all()
+    serializer_class = Reportes_Encontrada_Serializer
     # permission_classes = (IsAuthenticated,)
     
     def get(self, request, *args, **kwargs):
@@ -92,8 +92,8 @@ class ReportesEncontradosDetailAPIView(generics.RetrieveAPIView):
         return super().get(request, *args, **kwargs)
 class ReportesEncontradosUpdateAPIView(generics.RetrieveUpdateAPIView):
     
-    queryset = ReportesEncontrada.objects.all()
-    serializer_class = ReportesEncontradaSerializer
+    queryset = Reportes_Encontrados.objects.all()
+    serializer_class = Reportes_Encontrada_Serializer
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
 
@@ -117,8 +117,8 @@ class ReportesEncontradosUpdateAPIView(generics.RetrieveUpdateAPIView):
     
 class ReportesEncontradosDeleteAPIView(generics.RetrieveDestroyAPIView):
     
-    queryset = ReportesEncontrada.objects.all()
-    serializer_class = ReportesEncontradaSerializer
+    queryset = Reportes_Encontrados.objects.all()
+    serializer_class = Reportes_Encontrada_Serializer
     # permission_classes = (IsAuthenticated,)
     # permission_classes = [IsAdminUser]
 
