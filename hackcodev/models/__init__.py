@@ -1,0 +1,1 @@
+from .desaparecidos import Desaparecidos
