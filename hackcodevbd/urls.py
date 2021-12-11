@@ -19,7 +19,7 @@ from hackcodev import views
 
 urlpatterns = [
     path('desaparecido/', views.DesaparecidosCreateView.as_view()),
-    path('desaparecido/<int:pk', views.DesaparecidosDetailView.as_view()),
+    path('desaparecido/<int:pk>/', views.DesaparecidosDetailView.as_view()),
     path('desaparecidoLista/', views.DesaparecidosListView.as_view()),
 
 
