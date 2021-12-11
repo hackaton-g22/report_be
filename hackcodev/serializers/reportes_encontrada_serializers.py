@@ -1,23 +1,22 @@
 from rest_framework                         import serializers
 from hackcodev.models.reportes_encontrada   import Reportes_Encontrada
-from models.desaparecidos                   import Desaparecido
-
+from hackcodev.models.desaparecidos         import Desaparecido
 class Reportes_Encontrada_Serializer(serializers.ModelSerializer):
     
     class Meta:
         
         model = Reportes_Encontrada
         fields = ['id', 'p_notifica_cedula', 'p_notifica_nombres', 'p_notifica_apellidos', 'p_notifica_telefono', 
-                  'p_notifica_lugar_encontrado', 'p_notifica_direccion', 'p_notifica_tipo_sangre', 'desaparecido_fk']
+                  'p_notifica_lugar_encontrado', 'p_notifica_direccion', 'p_notifica_tipo_sangre', 'p_id_desaparecido_fk']
         
-    def create(self, validated_data):
+    """def create(self, validated_data):
         print("Esta es la data que llega en el metodo created", validated_data)
         reporte_instance = Reportes_Encontrada.objects.create(**validated_data)
-        return reporte_instance
+        return reporte_instance"""
     
     def to_representation(self, obj):  # de objeto a json
         reporte = Reportes_Encontrada.objects.get(id=obj.id)
-        desaparecidos = Desaparecido.objects.get(id=obj.desaparecido_fk.id)
+        desaparecidos = Desaparecido.objects.get(id=obj.p_id_desaparecido_fk.id)
         
         return {
             "id": reporte.id,
@@ -37,7 +36,7 @@ class Reportes_Encontrada_Serializer(serializers.ModelSerializer):
                 'des_edad' : desaparecidos.des_edad,
                 'des_fecha_desaparecido' : desaparecidos.des_fecha_desaparecido,
                 'des_foto' : desaparecidos.des_foto,
-                'des_tipo_sangre' : desaparecidos.des_tipp_sangre,
+                'des_tipo_sangre' : desaparecidos.des_tipo_sangre,
                 'des_sexo' : desaparecidos.des_sexo,
                 'des_color_piel' : desaparecidos.des_color_piel,
                 'des_ciudad_recidencia' : desaparecidos.des_ciudad_recidencia,

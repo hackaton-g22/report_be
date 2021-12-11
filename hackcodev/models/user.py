@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     us_entidad = models.CharField('Entidad', max_length=100)
     us_telefono = models.CharField('Telefono', max_length=100)
     us_ciudad = models.CharField('Ciudad', max_length=100)
-    us_direccion = models.EmailField('Direccion', max_length=256)
+    us_direccion = models.CharField('Direccion', max_length=256)
     password = models.CharField('Password', max_length=256)
     
     def save(self, **kwargs):
