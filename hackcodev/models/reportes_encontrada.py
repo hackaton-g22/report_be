@@ -1,4 +1,5 @@
 from django.db import models
+from .desaparecidos import Desaparecido
 
 class Reportes_Encontrada(models.Model):
     
